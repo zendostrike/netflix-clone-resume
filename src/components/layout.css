@@ -4,6 +4,8 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
+  background: #000;
+  color: #DBDBDB;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -199,7 +201,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
+  color: #DBDBDB;
   font-family: georgia, serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -219,6 +221,14 @@ img {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+}
+span, p, a {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+.linkbutton{
+  color: #fff;
+  text-decoration: none;
 }
 h1 {
   margin-left: 0;

@@ -1,20 +1,28 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import Featured from "../components/featured";
+import CardRow from "../components/CardRow";
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+    <div>
+      <Featured />
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <div style={{ padding: "50px 80px" }}>
+      <div style={{ marginBottom: 20 }}>
+        <CardRow title="Last Released" />
+      </div>
+      <div style={{ marginBottom: 20 }}>
+        <CardRow title="React Projects" />
+      </div>
+      <div style={{ marginBottom: 20 }}>
+        <CardRow title="Vue Projects" />
+      </div>
+    </div>
   </Layout>
 )
 
