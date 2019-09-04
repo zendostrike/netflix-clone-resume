@@ -1,25 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import reactImg from "../images/react.jpg";
 
 const Container = styled.div`
-    width: 240px;
-    height: 150px;
-    background: url(${reactImg});
-    background-repeat: no-repeat;
-    background-size: contain;
     cursor: pointer;
-    -moz-box-shadow:    inset 0px 0px 100px #000000;
-    -webkit-box-shadow: inset 0px 0px 100px #000000;
-    box-shadow:         inset 0px 0px 100px #000000;
-    transition: transform .5s;
+    transition: 450ms all;
     :hover{
         transform: scale(1.5);
+        margin: 0 50px;
+        z-index: 2;
     }
+    width: 244px;
+    height: 138px;
+    padding: 0 2px;
+    ${({ isDisabled }) => isDisabled && "pointer-events:none;"}
 `;
 
-const Card = () => (
-    <Container />
+const Card = ({ item, disabled }) => (
+    <Container isDisabled={disabled} onClick={() => alert("hola")}>
+        <img src={item.image} alt={item.name} />
+    </Container>
 )
 
 export default Card;
