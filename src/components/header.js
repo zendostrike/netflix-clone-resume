@@ -27,7 +27,7 @@ const Logo = styled.div`
 const Left = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 380px;
 `;
 
 const Right = styled.div`
@@ -47,8 +47,39 @@ const Header = ({ siteTitle }) => (
   <Container>
     <Left>
       <Logo />
-      <LinkButton selected>My Work</LinkButton>
-      <LinkButton>About me</LinkButton>
+      <Link
+        to="/"
+        style={{
+          color: `white`,
+          textDecoration: `none`,
+        }}
+      >
+        <LinkButton selected>
+          My Work
+        </LinkButton>
+      </Link>
+      <Link
+        to="/page-2"
+        style={{
+          color: `white`,
+          textDecoration: `none`,
+        }}
+      >
+        <LinkButton>
+          About me
+        </LinkButton>
+      </Link>
+      <Link
+        to="/"
+        style={{
+          color: `white`,
+          textDecoration: `none`,
+        }}
+      >
+        <LinkButton>
+          Blog
+        </LinkButton>
+      </Link>
     </Left>
     <Right>
       <div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 
-import { Subtitle } from "./elements/typography";
-import Card from "./Card";
+import { Container, Section, ArrowWrapper, StyledArrow } from "./styles";
+import { Subtitle } from "../elements/typography";
+import Card from "../Card";
 
 const projects = [
     {
@@ -40,61 +40,29 @@ const projects = [
         name: "Streeet",
         description: "Lorem ipsum",
         image: "https://zendostrike-general.s3.us-east-2.amazonaws.com/content/sabrina.jpg"
+    },
+    {
+        id: "gt79091c5a880faf6fb5e6082eb1d2f4",
+        name: "VoiceCode",
+        description: "Lorem ipsum",
+        image: "https://zendostrike-general.s3.us-east-2.amazonaws.com/content/sabrina.jpg"
+    },
+    {
+        id: "gu69091c5a880faf6fb5e6082eb1b221",
+        name: "Instacoffe",
+        description: "Lorem ipsum",
+        image: "https://zendostrike-general.s3.us-east-2.amazonaws.com/content/sabrina.jpg"
     }
 ]
 
-const Container = styled.div`
-    display: grid;
-    position: relative;
-`;
-
-const Section = styled.section`
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(7, fit-content(244px));
-    margin-left: 80px;
-`;
-
-const StyledArrow = styled.a`
-    color: #fff;
-    text-decoration: none;
-    font-size: 5em;
-    width: 80px;
-    padding: 20px;
-    text-align: center;
-    z-index: 1;
-    top: 44px;
-    bottom: 0;
-    cursor: pointer;
-    visibility: hidden;
-    transition: visibility 0s, opacity 0.5s linear;
-    ${({visible}) => visible ? "position: absolute;" : "position: relative;"}
-`;
-
-const ArrowWrapper = styled.div`
-    width: 80px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 0;
-    ${({isLeft}) => {
-        if(isLeft) {
-            return "left: 0;background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);"
-        } else {
-            return "right: 0;background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);"
-        }
-    }}
-    :hover {
-        ${StyledArrow} {
-            visibility: visible;
-            background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-        }
-    }
+const calculateCurrentItems = (items, sectionsCount, n) => {
+    // there must be always n items showing
+    const lastItem = items.pop();
+    items.unshift(lastItem);
     
-`;
+    
 
-const contentGenerator = items => {
-    // define prev, next, current items
+    return items;
 }
 
 const ArrowNavigation = {
@@ -114,17 +82,17 @@ const Arrow = ({ direction, isNextTriggered }) => {
     </ArrowWrapper>)
 }
 
-const CardRow = ({title}) => {
+const Carousel = ({title}) => {
     const itemsToShow = {
         sm: 3,
         md: 4,
-        lg: 5
+        lg: 6
     };
 
     const sectionsCount = Math.ceil(projects.length / itemsToShow.lg);
     const [prev, setPrev] = useState(ArrowNavigation);
     const [next, setNext] = useState(getArrowNavigation(projects.length));
-    const [currentItems, setCurrentItems] = useState(projects.slice(0, itemsToShow.lg));
+    const [currentItems, setCurrentItems] = useState(calculateCurrentItems(projects, sectionsCount, 5));
 
     // calculate if card 1 is on position 0
     const isNextTriggered = currentItems[0].id !== projects[0].id;
@@ -133,12 +101,14 @@ const CardRow = ({title}) => {
 
     return (
         <>
-            <Subtitle style={{marginLeft: 80 }}>{title} / {sectionsCount} / {isNextTriggered ? "triggered" : "not triggered"} </Subtitle>
+            <div style={{ padding: "10px 0px"}}>
+                <Subtitle style={{marginLeft: 80 }}>{title}</Subtitle>
+            </div>
             <Container>
                 <Arrow direction="left" isNextTriggered={isNextTriggered} />
                 <Section id="section1">
                     {currentItems.map((e, index) => (
-                        <Card item={e} disabled={index === currentItems.length - 1} />
+                        <Card item={e} disabled={index === currentItems.length - 1 || index === 0} />
                     ))}
                 </Section>
                 <Arrow direction="right" />
@@ -147,4 +117,4 @@ const CardRow = ({title}) => {
     )
 }
 
-export default CardRow;
+export default Carousel;

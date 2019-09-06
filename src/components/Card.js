@@ -7,17 +7,24 @@ const Container = styled.div`
     :hover{
         transform: scale(1.5);
         margin: 0 50px;
-        z-index: 2;
+        z-index: 4;
     }
-    width: 244px;
-    height: 138px;
+    max-width: 225px;
+    height: 125px;
     padding: 0 2px;
+    position: relative;
     ${({ isDisabled }) => isDisabled && "pointer-events:none;"}
+`;
+
+const Image = styled.img`
+    width: 100%;
+    height: auto;
 `;
 
 const Card = ({ item, disabled }) => (
     <Container isDisabled={disabled} onClick={() => alert("hola")}>
-        <img src={item.image} alt={item.name} />
+        <Image src={item.image} alt={item.name} />
+        <span style={{ position: "absolute", top: 0, left: 10, fontSize: "10px"}}>{item.name}</span>
     </Container>
 )
 

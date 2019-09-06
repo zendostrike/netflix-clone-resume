@@ -9,7 +9,7 @@ const Container = styled.div`
     background: url(${voldemortImg}) #080808;
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: left 446px bottom;
+    background-position: right;
     height: 500px;
     -moz-box-shadow:    inset 60px 60px 100px #000000;
     -webkit-box-shadow: inset 60px 60px 100px #000000;

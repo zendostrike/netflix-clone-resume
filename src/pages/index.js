@@ -16,12 +16,6 @@ const IndexPage = () => (
       <div>
         <Carousel title="Last Released" />
       </div>
-      {/* <div style={{ marginBottom: 20 }}>
-        <Carousel title="React Projects" />
-      </div>
-      <div style={{ marginBottom: 20 }}>
-        <Carousel title="Vue Projects" />
-      </div> */}
     </div>
   </Layout>
 )
